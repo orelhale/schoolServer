@@ -2,9 +2,20 @@ let express = require("express")
 let router = express.Router()
 
 let { users_findUser, users_findOneUser, users_updateOneUser } = require("../models/UsersModel")
-let { classes_findClass, classes_findOneClass, classes_updateOneClass, classes_createClass } = require("../models/ClassesModel");
-let { ClassesModel } = require("../models/ClassesModel")
-let { StudentsModel } = require("../models/StudentsModel")
+
+let { student_deleteOneStudent, student_deleteManyStudent, student_insertManyStudent, student_updateManyStudent} = require("../models/StudentsModel")
+
+let {
+    classes_findClass,
+    classes_findOneAndUpdateClass,
+    classes_findOneClass,
+    classes_updateOneClass,
+    classes_createClass,
+    classes_findByIdAndUpdateClass,
+    classes_findByIdClass,
+    classes_deleteOneClass
+} = require("../models/ClassesModel");
+
 
 
 
@@ -56,7 +67,7 @@ router.put("/editUser", async (req, res) => {
 // לתקן: את השם של הפונקציה, משום שהפונקציה מחזירה רק את השמות של הכיתה
 router.get("/getListOfAllTheClasses", async (req, res) => {
     try {
-        let dataFromDatabase = await ClassesModel.find({}, "nameOfClass -_id")
+        let dataFromDatabase = await classes_findClass({}, "nameOfClass -_id")
         let listClass = dataFromDatabase.map(item => item.nameOfClass)
         // console.log("listClass = ",listClass);
         res.status(200).send(listClass)
@@ -83,7 +94,7 @@ router.get("/getListOf_ClassNameAndClassId", async (req, res) => {
 // מחזיר מערך של כל הנתונים של הכיתות
 router.get("/getListOfAllTheClassesWithStudents", async (req, res) => {
     try {
-        let dataFromDatabase = await ClassesModel.find({}, "-__v")
+        let dataFromDatabase = await classes_findClass({}, "-__v")
         // console.log("dataFromDatabase = ",dataFromDatabase);
         res.status(200).send(dataFromDatabase)
 
@@ -98,9 +109,8 @@ router.get("/getListOfAllTheClassesWithStudents", async (req, res) => {
 router.post("/addNewClass", async (req, res) => {
     try {
         let dataFromClient = req.body
-        console.log("dataFromClient = ", dataFromClient);
 
-        let checkIfClassExist = await ClassesModel.findOne({ nameOfClass: dataFromClient.nameOfClass }, " -__v")
+        let checkIfClassExist = await classes_findOneClass({ nameOfClass: dataFromClient.nameOfClass }, " -__v")
 
         if (checkIfClassExist) {
             return res.status(400).send("This class name already exist");
@@ -112,7 +122,7 @@ router.post("/addNewClass", async (req, res) => {
             nameOfSchool: dataFromClient.nameOfSchool,
         }
 
-        let newDateOfClass = new ClassesModel(dataToServer)
+        let newDateOfClass = await classes_createClass(dataToServer)
         newDateOfClass.save()
         // console.log("newDateOfClass = ",newDateOfClass);
 
@@ -121,9 +131,9 @@ router.post("/addNewClass", async (req, res) => {
             return student
         })
         // console.log("newListStudent = ",newListStudent);
-        let listStudentsFromServer = await StudentsModel.insertMany(newListStudent)
+        let listStudentsFromServer = await student_insertManyStudent(newListStudent)
         // console.log("listStudentsFromServer = ",listStudentsFromServer);
-        let upDateListStudentOfClass = await ClassesModel.findByIdAndUpdate({ _id: newDateOfClass._id }, { listStudents: listStudentsFromServer })
+        let upDateListStudentOfClass = await classes_findByIdAndUpdateClass({ _id: newDateOfClass._id }, { listStudents: listStudentsFromServer })
         // מישום מה רשימת הסטודנטים שחוזרת למשתנה היא רשימת הסטודנטים הישנה ולא המעודכנת לכן אני מעדכן אותה ידנית
         upDateListStudentOfClass.listStudents = listStudentsFromServer;
 
@@ -135,7 +145,7 @@ router.post("/addNewClass", async (req, res) => {
         //         return student;
         //     }
         // })
-        // let upDateListStudentOfClass = await ClassesModel.findByIdAndUpdate({_id: newDateOfClass._id}, {listStudents: newListStudent2})
+        // let upDateListStudentOfClass = await classes_findByIdAndUpdateClass({_id: newDateOfClass._id}, {listStudents: newListStudent2})
 
 
         // console.log("upDateListStudentOfClass = ",upDateListStudentOfClass);
@@ -153,9 +163,8 @@ router.post("/addNewClass", async (req, res) => {
 router.delete("/deleteClassAndAllHisStudents", async (req, res) => {
     try {
         let dataToDelete = req.query.classToDelete
-        console.log("dataToDelete = ", dataToDelete);
-        let deleteClass = await ClassesModel.deleteOne({ _id: dataToDelete })
-        let deleteAllStudents = await StudentsModel.deleteMany({ classId: dataToDelete })
+        let deleteClass = await classes_deleteOneClass({ _id: dataToDelete })
+        let deleteAllStudents = await student_deleteManyStudent({ classId: dataToDelete })
 
         res.status(200).send({ deleteAllStudents: deleteAllStudents, deleteClass: deleteClass });
     } catch (err) {
@@ -171,8 +180,8 @@ router.put("/editClass", async (req, res) => {
     try {
 
         let classToEdit = req.body;
-        // console.log("classToEdit = ",classToEdit);
-        let currentClass = await ClassesModel.findById(classToEdit._id)
+
+        let currentClass = await classes_findByIdClass(classToEdit._id)
         if (!currentClass) {
             console.log("not fined class");
             return res.status(400).send("err in - not fined class");
@@ -220,12 +229,12 @@ router.put("/editClass", async (req, res) => {
             if (arrStudentToDelete[0]) {
                 let arrDelete = arrStudentToDelete.map((student) => student._id)
                 console.log("Students were deleted");
-                let allD = []
+                let _onlyToTest_needToDelete = []
                 for (let i = 0; i < arrDelete.length; i++) {
-                    let s = await StudentsModel.deleteOne({ _id: arrDelete[i] })
-                    allD.push(s)
+                    let s = await student_deleteOneStudent({ _id: arrDelete[i] })
+                    _onlyToTest_needToDelete.push(s)
                 }
-                console.log("allD = ", allD);
+                console.log("_onlyToTest_needToDelete = ", _onlyToTest_needToDelete);
                 console.log("yes");
             }
             //  <- בודק את מערך "הוספת תלמידים חדשים" אם צריך להוסיף תלמידים
@@ -237,7 +246,7 @@ router.put("/editClass", async (req, res) => {
                     student.classId = classToEdit._id
                     return student;
                 })
-                let newStudents = await StudentsModel.insertMany(arrStudentToAdd)
+                let newStudents = await student_insertManyStudent(arrStudentToAdd)
                 console.log("yes");
                 // newListStudent.push(newStudents)
                 newListStudent = newListStudent.concat(newStudents);
@@ -254,7 +263,7 @@ router.put("/editClass", async (req, res) => {
             //  בדיקה: אם השם של הכיתה השתנה -> ואם כן לעדכן את שם של הכיתה
             if (currentClass.nameOfClass != classToEdit.nameOfClass) {
                 console.log("nameOfClass is change");
-                dataOfTheNewClass = await ClassesModel.findOneAndUpdate({ _id: classToEdit._id }, { nameOfClass: classToEdit.nameOfClass })
+                dataOfTheNewClass = await classes_findOneAndUpdateClass({ _id: classToEdit._id }, { nameOfClass: classToEdit.nameOfClass })
                 dataOfTheNewClass.nameOfClass = classToEdit.nameOfClass;
                 console.log("yes");
             }
@@ -262,8 +271,7 @@ router.put("/editClass", async (req, res) => {
             // (בקולקשן של התלמידים) ואם כן אז הוא מעדכן את הנתונים של התלמידים
             if (arrStudentToCheckChange[0]) {
                 // console.log("arrStudentToCheckChange");
-                await StudentsModel.updateMany(arrStudentToCheckChange)
-                console.log("StudentsModel = ", StudentsModel);
+                await student_updateManyStudent(arrStudentToCheckChange)
                 // לעשות הזדמנות: צאיך לעדכן את הנתונים החדשים אצל רשימת כיתה
                 console.log("yes");
             }
@@ -272,7 +280,7 @@ router.put("/editClass", async (req, res) => {
             if (arrStudentToDelete[0] || arrStudentToAdd[0] || arrStudentToCheckChange[0]) {
                 console.log("The listStudents of the class has changed");
                 // console.log("newListStudent = ",newListStudent);
-                dataOfTheNewClass = await ClassesModel.findOneAndUpdate({ _id: classToEdit._id }, { listStudents: newListStudent })
+                dataOfTheNewClass = await classes_findOneAndUpdateClass({ _id: classToEdit._id }, { listStudents: newListStudent })
                 dataOfTheNewClass.listStudents = newListStudent;
                 console.log("yes");
             }
@@ -296,9 +304,8 @@ router.put("/editClass", async (req, res) => {
 router.put("/updateClass", async (req, res) => {
     try {
         let dataFromClient = req.body
-        // console.log("dataFromClient = ",dataFromClient);
-        let updateClass = await ClassesModel.updateOne({ nameOfClass: dataFromClient.oldNameClass }, dataFromClient)
-        // let deleteSudents = await StudentsModel.deleteMany({nameOfClass: nameOfClass})
+        let updateClass = await classes_updateOneClass({ nameOfClass: dataFromClient.oldNameClass }, dataFromClient)
+        // let deleteSudents = await student_deleteManyStudent({nameOfClass: nameOfClass})
         res.status(200).send(updateClass);
     } catch (err) {
         console.log("err in - admin updateClass");

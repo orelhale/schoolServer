@@ -15,10 +15,10 @@ ClassesModel = mongoose.model("classes", schema)
 exports.ClassesModel = ClassesModel;
 
 
-let classes_createClass = (data) => {
-    let newClass = new ClassesModel(data)
+let classes_createClass = async (data) => {
+    let newClass = await new ClassesModel(data)
     console.log("_classes_createClass_ = ", newClass);
-    return newClass.save()
+    return await newClass.save()
 }
 
 let classes_findClass = (condition, data) => {
@@ -29,8 +29,23 @@ let classes_findOneClass = (condition, data) => {
     return ClassesModel.findOne(condition, data);
 }
 
+// לבדוק אולי מיותר
+let classes_findByIdClass = (condition, data) => {
+    return ClassesModel.findById(condition, data);
+}
+
+// לבדוק אולי מיותר
+let classes_findByIdAndUpdateClass = (condition, update) => {
+    return ClassesModel.findByIdAndUpdate(condition, update);
+}
+
 let classes_updateOneClass = (condition, update) => {
     return ClassesModel.updateOne(condition, update);
+}
+
+// לבדוק אולי מיותר
+let classes_findOneAndUpdateClass = (condition, update) => {
+    return ClassesModel.findOneAndUpdate(condition, update);
 }
 
 let classes_deleteOneClass = (condition) => {
@@ -41,8 +56,17 @@ let classes_deleteManyClass = (condition) => {
     return ClassesModel.deleteMany(condition);
 }
 
-exports.classes_findClass = classes_findClass
-exports.classes_findOneClass = classes_findOneClass
-exports.classes_updateOneClass = classes_updateOneClass
-exports.classes_createClass = classes_createClass
-// module.exports = { classes_findClass, classes_findOneClass, classes_updateOneClass, classes_createClass }
+// exports.classes_findClass = classes_findClass
+// exports.classes_findOneClass = classes_findOneClass
+// exports.classes_updateOneClass = classes_updateOneClass
+// exports.classes_createClass = classes_createClass
+module.exports = {
+    classes_findClass,
+    classes_findOneClass,
+    classes_updateOneClass,
+    classes_createClass,
+    classes_findOneAndUpdateClass,
+    classes_findByIdAndUpdateClass,
+    classes_findByIdClass,
+    classes_deleteOneClass
+}

@@ -17,28 +17,49 @@ let StudentsModel = mongoose.model("students", schema);
 exports.StudentsModel = StudentsModel;
 
 
-let Student_findStudent = (condition, data) => {
+let student_findStudent = (condition, data) => {
     return StudentsModel.find(condition, data);
 }
 
-let Student_findOneStudent = (condition, data) => {
+let student_findOneStudent = (condition, data) => {
     return StudentsModel.findOne(condition, data);
 }
 
-let Student_updateOneStudent = (condition, update) => {
+let student_updateOneStudent = (condition, update) => {
     return StudentsModel.updateOne(condition, update);
 }
 
-let Student_deleteOneStudent = (condition) => {
+let student_deleteOneStudent = (condition) => {
     return StudentsModel.deleteOne(condition);
 }
 
-let Student_deleteManyStudent = (condition) => {
+let student_deleteManyStudent = (condition) => {
     return StudentsModel.deleteMany(condition);
 }
 
+let student_insertManyStudent = (condition) => {
+    return StudentsModel.insertMany(condition);
+}
 
-exports.Student_findStudent = Student_findStudent;
-exports.Student_findOneStudent = Student_findOneStudent;
-exports.Student_updateOneStudent = Student_updateOneStudent;
-// module.exports = { Student_findStudent, Student_findOneStudent, Student_updateOneStudent }
+let student_updateManyStudent = (condition) => {
+    return StudentsModel.updateMany(condition);
+}
+
+
+// exports.student_findStudent = student_findStudent;
+// exports.student_findOneStudent = student_findOneStudent;
+// exports.student_updateOneStudent = student_updateOneStudent;
+// exports.student_deleteOneStudent = student_deleteOneStudent;
+// exports.student_deleteManyStudent = student_deleteManyStudent;
+// exports.student_insertManyStudent = student_insertManyStudent;
+// exports.student_updateManyStudent = student_updateManyStudent;
+
+module.exports = {
+    student_findStudent,
+    student_findOneStudent,
+    student_updateOneStudent,
+    student_deleteOneStudent,
+    student_deleteManyStudent,
+    student_insertManyStudent,
+    student_updateManyStudent,
+}

@@ -6,7 +6,6 @@ let usersRoute = require("../../routes/usersRoute")
 function mainRoute(app) {
 
    app.use((req, res, next) => {
-      console.log("\n");
       console.log("Path = ", req.url);
       console.log("Body = ", req.body);
       console.log("\n");
