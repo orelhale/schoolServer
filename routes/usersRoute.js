@@ -148,7 +148,7 @@ router.post("/getAllExamsFromOneTeacher", async (req, res) => {
 router.delete("/deleteExam", async (req, res) => {
     try {
         await deleteOneExam(req.body.id)
-        res.status(400).send("The exam deleted in success")
+        res.status(200).send("The exam was successfully deleted")
     } catch (err) {
         res.status(400).send("Failed to delete the test")
     }
