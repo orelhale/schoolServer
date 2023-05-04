@@ -12,42 +12,41 @@ let schema = new Schema({
 })
 
 
-let ExamsModel = mongoose.model("exams", schema)
-
-exports.ExamsModel = ExamsModel;
+let ExamsModel = mongoose.model("___", schema)
 
 
-let exams_createExam = (data) => {
+
+let ____createExam = (data) => {
     let newExam = new ExamsModel(data)
     return newExam.save()
 }
 
-let exams_findExam = (condition, columns) => {
+let ____findExam = (condition, columns) => {
     return ExamsModel.find(condition, columns);
 }
 
-let exams_findExamById = (condition, columns) => {
+let ____findExamById = (condition, columns) => {
     return ExamsModel.findById(condition, columns);
 }
 
-let exams_findOneExam = (condition, columns) => {
+let ____findOneExam = (condition, columns) => {
     return ExamsModel.findOne(condition, columns);
 }
 
-let exams_updateOneExam = (condition, update) => {
+let ____updateOneExam = (condition, update) => {
     return ExamsModel.updateOne(condition, update);
 }
 
-let exams_findByIdAndDelete = (condition) => {
+let ____findByIdAndDelete = (condition) => {
     return ExamsModel.findByIdAndDelete(condition);
 }
 
 
 module.exports = {
-    exams_createExam,
-    exams_findExam,
-    exams_findOneExam,
-    exams_updateOneExam,
-    exams_findExamById,
-    exams_findByIdAndDelete,
+    ____createExam,
+    ____findExam,
+    ____findOneExam,
+    ____updateOneExam,
+    ____findExamById,
+    ____findByIdAndDelete,
 }

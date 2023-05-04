@@ -4,7 +4,7 @@ let router = express.Router()
 let { StudentsModel } = require("../models/StudentsModel")
 let { student_findStudent, student_findOneStudent, student_updateOneStudent } = require("../models/StudentsModel")
 let { DailyDatasModel } = require("../models/DailyDatasModel")
-let { exams_createExam, exams_updateOneExam, exams_findOneExam, exams_findExam, exams_deleteOneExam } = require("../models/ExamsModel")
+let { exams_createExam, exams_updateOneExam, exams_findOneExam, exams_findExam } = require("../models/ExamsModel")
 let { deleteOneExam } = require("../functions/exam_function")
 
 router.get("/", (req, res) => {
@@ -63,7 +63,6 @@ router.put("/addNewDailyData", async (req, res) => {
 
 router.post("/getDailyDataOfSpecificClass", async (req, res) => {
     try {
-        console.log("getDailyDataOfSpecificClass");
         let dataFromClient = req.body
         let dataFromDatabase = await DailyDatasModel.findOne({ month: dataFromClient.month })
 
@@ -106,14 +105,14 @@ router.post("/getDailyDataOfSpecificClass", async (req, res) => {
 
 
 router.post("/addExam", async (req, res) => {
-    let requestFromClient = req.body
+    let { teacherId, className, examName, date } = req.body
 
 
     let obj = {
-        teacherId: requestFromClient.teacherId,
-        className: requestFromClient.className,
-        examName: requestFromClient.examName,
-        date: requestFromClient.date,
+        teacherId: teacherId,
+        className: className,
+        examName: examName,
+        date: date,
     }
 
     let searchExam = await exams_findOneExam(obj);
@@ -136,23 +135,22 @@ router.post("/addExam", async (req, res) => {
 
 
 
-router.post("/getAllExamsFromOneTeacher", async (req, res) => {
-    let teacherDetails = req.body
-    let allExams = await exams_findExam({ teacherId: teacherDetails.teacherId, className: teacherDetails.className });
-    console.log("allExams = ", allExams);
-    res.status(200).send(allExams);
-})
+// router.post("/getAllExamsFromOneTeacher", async (req, res) => {
+//     let teacherDetails = req.body
+//     let allExams = await exams_findExam({ teacherId: teacherDetails.teacherId, className: teacherDetails.className });
+//     res.status(200).send(allExams);
+// })
 
 
 
-router.delete("/deleteExam", async (req, res) => {
-    try {
-        await deleteOneExam(req.body.id)
-        res.status(200).send("The exam was successfully deleted")
-    } catch (err) {
-        res.status(400).send("Failed to delete the test")
-    }
-})
+// router.delete("/deleteExam", async (req, res) => {
+//     try {
+//         await deleteOneExam(req.body.id)
+//         res.status(200).send("The exam was successfully deleted")
+//     } catch (err) {
+//         res.status(400).send("Failed to delete the test")
+//     }
+// })
 
 
 module.exports = router
