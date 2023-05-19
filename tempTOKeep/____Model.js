@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 let schema = new Schema({
     teacherId: String,
-    className: String,
+    className: { type: String, required: true },
     date: String,
     examName: String,
     examList: Array,
@@ -12,41 +12,40 @@ let schema = new Schema({
 })
 
 
-let ExamsModel = mongoose.model("___", schema)
+let ProfessionModel = mongoose.model("professions", schema)
 
 
-
-let ____createExam = (data) => {
-    let newExam = new ExamsModel(data)
-    return newExam.save()
+let create = (data) => {
+    let newData = new ProfessionModel(data)
+    return newData.save()
 }
 
-let ____findExam = (condition, columns) => {
-    return ExamsModel.find(condition, columns);
+let find = (condition = {}, columns) => {
+    return ProfessionModel.find(condition, columns);
 }
 
-let ____findExamById = (condition, columns) => {
-    return ExamsModel.findById(condition, columns);
+let findById = (condition, columns) => {
+    return ProfessionModel.findById(condition, columns);
 }
 
-let ____findOneExam = (condition, columns) => {
-    return ExamsModel.findOne(condition, columns);
+let findOne = (condition, columns) => {
+    return ProfessionModel.findOne(condition, columns);
 }
 
-let ____updateOneExam = (condition, update) => {
-    return ExamsModel.updateOne(condition, update);
+let updateOne = (condition, update) => {
+    return ProfessionModel.updateOne(condition, update);
 }
 
-let ____findByIdAndDelete = (condition) => {
-    return ExamsModel.findByIdAndDelete(condition);
+let deleteById = (condition) => {
+    return ProfessionModel.findByIdAndDelete(condition);
 }
 
 
 module.exports = {
-    ____createExam,
-    ____findExam,
-    ____findOneExam,
-    ____updateOneExam,
-    ____findExamById,
-    ____findByIdAndDelete,
+    create,
+    find,
+    findOne,
+    updateOne,
+    findById,
+    deleteById,
 }

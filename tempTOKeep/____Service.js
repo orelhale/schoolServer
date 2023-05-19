@@ -1,28 +1,66 @@
 
 let { 
-   model_create___,
-   model_findByIdAndDelete,
-   model_find___ById,
-   model_updateOne___,
-   model_findOne___,
-   model_find___,
+   create,
+   find,
+   findOne,
+   updateOne,
+   findById,
+   deleteById,
 } = require("../models/___Model")
 
 
 
+let create___ = async (data) => {
+   try {
+      if (!data)
+         throw ("Data is empty")
+      return create___(data);
+   } catch (error) {
+      throw error
+   }
+}
 
-let deleteOne___ = async (id) => {
+
+let findAll___ = async (data) => {
+   try {
+
+      return find(data);
+   } catch (error) {
+      throw error
+   }
+}
+
+let find___ByTeacherIdAndClassId = (teacherId, classId, columns) => {
+   try {
+      if (!teacherId)
+         throw ("TeacherId is null");
+
+      if (!classId)
+         throw ("ClassId is null");
+
+      return find___({ teacherId: teacherId, className: classId }, columns);
+   } catch (error) {
+      throw error
+   }
+}
+
+let findOne___ = (condition, columns) => {
+   try {
+      if (!condition)
+         throw ("Condition is null");
+
+      return findOne___(condition, columns)
+   } catch (error) {
+      throw error
+   }
+}
+
+let findOne___ById = async (id, columns) => {
    try {
       if (!id)
          throw ("Id is null");
 
-      let existCheck = await model_find___ById(id);
-
-      if (!existCheck)
-         throw ("Not found id");
-
-      return model_findByIdAndDelete(id);
-
+      return findById(id, columns)
    } catch (error) {
       throw error
    }
@@ -35,12 +73,12 @@ let updataOne___ = async (id, columns) => {
       if (!id)
          throw ("Id is null");
 
-      let existCheck = await model_find___ById(id);
+      let existCheck = await findById(id);
 
       if (!existCheck)
          throw ("Not found id");
 
-      return model_updateOne___({ _id: id }, columns);
+      return updateOne___({ _id: id }, columns);
 
    } catch (error) {
       throw error
@@ -48,52 +86,27 @@ let updataOne___ = async (id, columns) => {
 }
 
 
-let createOne___ = async (data) => {
-   try {
-      if (!data)
-         throw ("Data is empty")
-      return model_create___(data);
-   } catch (error) {
-      throw error
-   }
-}
-
-
-let find___ByTeacherIdAndClassId = (teacherId, classId, columns) => {
-   try {
-      if (!teacherId)
-         throw ("TeacherId is null");
-
-      if (!classId)
-         throw ("ClassId is null");
-
-      return model_find___({ teacherId: teacherId, className: classId }, columns);
-   } catch (error) {
-      throw error
-   }
-}
-
-let findOne___ = (condition, columns) => {
-   try {
-      if (!condition)
-         throw ("Condition is null");
-
-      return model_findOne___(condition, columns)
-   } catch (error) {
-      throw error
-   }
-}
-
-let findOne___ById = async (id, columns) => {
+let delete___ = async (id) => {
    try {
       if (!id)
          throw ("Id is null");
 
-      return model_find___ById(id, columns)
+      let existCheck = await findById(id);
+
+      if (!existCheck)
+         throw ("Not found id");
+
+      return deleteById(id);
+
    } catch (error) {
       throw error
    }
 }
+
+
+
+
+
 
 // let find = async (id, data) => {
 //    try {
