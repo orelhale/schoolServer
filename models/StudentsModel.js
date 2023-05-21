@@ -16,6 +16,10 @@ let StudentsModel = mongoose.model("students", schema);
 // אחרי שסיימתי להעביר את כל לפונקציות - אפשר למחוק את המשתנה הזה
 exports.StudentsModel = StudentsModel;
 
+let create = (data) => {
+    let newData = new StudentsModel(data)
+    return newData.save()
+ }
 
 let student_findStudent = (condition, data) => {
     return StudentsModel.find(condition, data);
@@ -55,6 +59,7 @@ let student_updateManyStudent = (condition) => {
 // exports.student_updateManyStudent = student_updateManyStudent;
 
 module.exports = {
+    create,
     student_findStudent,
     student_findOneStudent,
     student_updateOneStudent,
