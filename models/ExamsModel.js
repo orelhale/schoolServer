@@ -8,7 +8,7 @@ let schema = new Schema({
     date: String,
     examName: String,
     examList: Array,
-    average: String,
+    average: Number,
 })
 
 

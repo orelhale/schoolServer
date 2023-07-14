@@ -3,6 +3,7 @@ let adminRoute = require("../../routes/adminRoute")
 let usersRoute = require("../../routes/usersRoute")
 let examsRoute = require("../../routes/examsRoute")
 let professionRoute = require("../../routes/professionRoute")
+let dailydatasRoute = require("../../routes/dailydatasRoute")
 
 
 function mainRoute(app) {
@@ -19,6 +20,7 @@ function mainRoute(app) {
    app.use("/users", usersRoute)
    app.use("/exams", examsRoute)
    app.use("/professions", professionRoute)
+   app.use("/dailydatas", dailydatasRoute)
 
    app.use("*", (req, res) => {
       res.status(404).send("The page not found")

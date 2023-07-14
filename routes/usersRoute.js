@@ -29,6 +29,20 @@ router.post("/GetListOfStudentsInSpecificClasses", async (req, res) => {
 
 
 
+// עדיין בשישמוש אבל צריך להחליף בקוד בין השאילתה הזו לשאילתה הבאה
+router.post("/GetListOfStudentsInSpecificClassesWithId", async (req, res) => {
+    try {
+        let dataFromCleient = req.body.nameOfClass
+        // console.log("dataFromCleient =",dataFromCleient);
+        let studentListData = await student_findStudent({ classId: dataFromCleient })
+        // console.log("studentListData = ",studentListData);
+        let listStudents = studentListData.map(item => item.nameStudent)
+        res.status(200).send(studentListData)
+    } catch (err) {
+        res.status(400).send("err in GetListOfStudentsInSpecificClassesWithId")
+    }
+})
+
 
 router.put("/addNewDailyData", async (req, res) => {
     try {

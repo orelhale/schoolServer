@@ -46,3 +46,45 @@ exports.dailyDatas_findOneDailyData = dailyDatas_findOneDailyData
 exports.dailyDatas_updateOneDailyData = dailyDatas_updateOneDailyData
 exports.dailyDatas_createDailyData = dailyDatas_createDailyData
 // module.exports = { dailyDatas_findDailyData, dailyDatas_findOneDailyData, dailyDatas_updateOneDailyData, dailyDatas_createDailyData }
+
+
+let create = (data) => {
+    let newData = new DailyDatasModel(data)
+    return newData.save()
+}
+
+let find = (condition = {}, columns) => {
+    return DailyDatasModel.find(condition, columns);
+}
+
+let findById = (condition, columns) => {
+    return DailyDatasModel.findById(condition, columns);
+}
+
+let findOne = (condition, columns) => {
+    return DailyDatasModel.findOne(condition, columns);
+}
+
+let updateOne = (condition, update) => {
+    return DailyDatasModel.updateOne(condition, update);
+}
+
+let deleteById = (condition) => {
+    return DailyDatasModel.findByIdAndDelete(condition);
+}
+
+// module.exports = {
+//     create,
+//     find,
+//     findOne,
+//     updateOne,
+//     findById,
+//     deleteById,
+// }
+
+exports.create = create
+exports.find = find
+exports.findOne = findOne
+exports.updateOne = updateOne
+exports.findById = findById
+exports.deleteById = deleteById

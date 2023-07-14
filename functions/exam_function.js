@@ -63,10 +63,10 @@ let createOneExam = async (data) => {
 let findExamsByTeacherIdAndClassId = (teacherId, classId, columns) => {
    try {
       if (!teacherId)
-         throw ("TeacherId is null");
-
+      throw ("TeacherId is null");
+      
       if (!classId)
-         throw ("ClassId is null");
+      throw ("ClassId is null");
 
       return exams_findExam({ teacherId: teacherId, className: classId }, columns);
    } catch (error) {
@@ -96,6 +96,16 @@ let findOneExamById = async (id, columns) => {
    }
 }
 
+let getStudentTestAverage = async () => {
+   try {
+      if (!id)
+         throw ("Id is null");
+
+      return exams_findExamById(id, columns)
+   } catch (error) {
+      throw error
+   }
+}
 // let find = async (id, data) => {
 //    try {
 //       if (!id)

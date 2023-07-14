@@ -3,6 +3,7 @@ let { createOneUser, findOneUser } = require("./user_function")
 let { createOneClass, findOneClass } = require("./class_function")
 let { createOneStudent, findOneStudent } = require("./student_function")
 let { createProfession, findOneProfession } = require("./profession_function")
+let { createOneExam, findOneExam } = require("./exam_function")
 
 
 let createDefaultUsers = async () => {
@@ -178,7 +179,7 @@ let createDefaultProfession = async () => {
          "name": "היסטוריה",
       }
    ]
-
+   
    for (let item of defaultStudent) {
       // createOneUser, findOneUser 
       let check = await findOneProfession({ _id: item._id })
@@ -187,12 +188,138 @@ let createDefaultProfession = async () => {
          // console.log("show = ", show);
       }
    }
+   
+}
+
+let createDefaultExams = async () => {
+
+   let defaultExams = [
+      {
+         "_id": "64b022a56395e24404fd8e20",
+         "teacherId": "64b01e7ca571052ebd9e4509",
+         "className": "6469fc617ef693879e575c2e",
+         "date": "7/13/2023",
+         "examName": "מבחן 1",
+         "examList": [
+            {
+              "nameStudent": "אוראל",
+              "id": "6469fc617ef693879e575c30",
+              "score": 100
+            },
+            {
+              "nameStudent": "שלמה",
+              "id": "6469fc617ef693879e575c41",
+              "score": 78
+            },
+            {
+              "nameStudent": "יעקב",
+              "id": "6469fc617ef693879e575c52",
+              "score": 45
+            },
+            {
+              "nameStudent": "ישראל",
+              "id": "6469fc617ef693879e575c63",
+              "score": 97
+            },
+            {
+              "nameStudent": "שמעון",
+              "id": "6469fc617ef693879e575c74",
+              "score": 56
+            }
+          ],
+         "average": 70,
+         "__v": 0
+      },
+      {
+         "_id": "64b022bc6395e24404fd8e27",
+         "teacherId": "64b01e7ca571052ebd9e4509",
+         "className": "6469fc617ef693879e575c2e",
+         "date": "7/10/2023",
+         "examName": "מבחן 2",
+         "examList": [
+            {
+              "nameStudent": "אוראל",
+              "id": "6469fc617ef693879e575c30",
+              "score": 78
+            },
+            {
+              "nameStudent": "שלמה",
+              "id": "6469fc617ef693879e575c41",
+              "score": 55
+            },
+            {
+              "nameStudent": "יעקב",
+              "id": "6469fc617ef693879e575c52",
+              "score": 31
+            },
+            {
+              "nameStudent": "ישראל",
+              "id": "6469fc617ef693879e575c63",
+              "score": 88
+            },
+            {
+              "nameStudent": "שמעון",
+              "id": "6469fc617ef693879e575c74",
+              "score": 95
+            }
+          ],
+         "average": 58,
+         "__v": 0
+      },
+      {
+         "_id": "64b0239b4d099e5a1274a703",
+         "teacherId": "64b01e7ca571052ebd9e4509",
+         "className": "6469fc617ef693879e575c2e",
+         "date": "7/13/2023",
+         "examName": "מבחן 3",
+         "examList": [
+            {
+              "nameStudent": "אוראל",
+              "id": "6469fc617ef693879e575c30",
+              "score": 100
+            },
+            {
+              "nameStudent": "שלמה",
+              "id": "6469fc617ef693879e575c41",
+              "score": 100
+            },
+            {
+              "nameStudent": "יעקב",
+              "id": "6469fc617ef693879e575c52",
+              "score": 53
+            },
+            {
+              "nameStudent": "ישראל",
+              "id": "6469fc617ef693879e575c63",
+              "score": 100
+            },
+            {
+              "nameStudent": "שמעון",
+              "id": "6469fc617ef693879e575c74",
+              "score": 99
+            }
+          ],
+         "average": 88,
+         "__v": 0
+      }
+   ]
+
+   for (let item of defaultExams) {
+      // createOneUser, findOneUser 
+      let check = await findOneExam({ _id: item._id })
+      if (!check) {
+         let show = await createOneExam(item)
+         // console.log("show = ", show);
+      }
+   }
 
 }
+
 
 module.exports = {
    createDefaultUsers,
    createDefaultClass,
    createDefaultStudent,
    createDefaultProfession,
+   createDefaultExams,
 }

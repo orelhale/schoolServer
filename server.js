@@ -3,7 +3,13 @@ let mongoose = require("mongoose")
 require('dotenv').config()
 let cors = require("cors")
 let mainRoute = require("./routes/mainRoute")
-let { createDefaultUsers, createDefaultClass, createDefaultStudent, createDefaultProfession } = require("./functions/system_function")
+let { 
+    createDefaultUsers,
+     createDefaultClass,
+     createDefaultStudent,
+     createDefaultProfession,
+     createDefaultExams,
+     } = require("./functions/system_function")
 
 require("./DB/connectionToMongo")
 
@@ -25,6 +31,7 @@ app.listen(port, () => {
     createDefaultUsers()
     createDefaultClass()
     createDefaultProfession()
+    createDefaultExams()
     console.log("server work in port = " + port)
 })
 
