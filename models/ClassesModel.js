@@ -56,10 +56,39 @@ let classes_deleteManyClass = (condition) => {
     return ClassesModel.deleteMany(condition);
 }
 
+
+
+let create = (data) => {
+    let newData = new ClassesModel(data)
+    return newData.save()
+}
+
+let find = (condition = {}, columns) => {
+    return ClassesModel.find(condition, columns);
+}
+
+let findById = (condition, columns = '') => {
+    return ClassesModel.findById(condition, columns);
+}
+
+let findOne = (condition, columns) => {
+    return ClassesModel.findOne(condition, columns);
+}
+
+let updateOne = (condition, update) => {
+    return ClassesModel.updateOne(condition, update);
+}
+
+let deleteById = (condition) => {
+    return ClassesModel.findByIdAndDelete(condition);
+}
+
 // exports.classes_findClass = classes_findClass
 // exports.classes_findOneClass = classes_findOneClass
 // exports.classes_updateOneClass = classes_updateOneClass
 // exports.classes_createClass = classes_createClass
+
+
 module.exports = {
     classes_findClass,
     classes_findOneClass,
@@ -68,5 +97,13 @@ module.exports = {
     classes_findOneAndUpdateClass,
     classes_findByIdAndUpdateClass,
     classes_findByIdClass,
-    classes_deleteOneClass
+    classes_deleteOneClass,
+
+
+    create,
+    find,
+    findOne,
+    updateOne,
+    findById,
+    deleteById,
 }

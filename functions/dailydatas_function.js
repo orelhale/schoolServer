@@ -44,6 +44,20 @@ let findDailydatasByTeacherIdAndClassId = (teacherId, classId, columns) => {
    }
 }
 
+let findDailydatasBySpecificCondition = async (condition, columns) => {
+   try {
+      if (!condition)
+         throw ("condition is empty");
+
+      let id = await findOne(condition, columns);
+      let obj = id ? await findById(id._id) : id
+
+      return obj
+   } catch (error) {
+      throw error
+   }
+}
+
 let findOneDailydatas = (condition, columns) => {
    try {
       if (!condition)
@@ -67,7 +81,7 @@ let findOneDailydatasById = async (id, columns) => {
 }
 
 
-let updataOneDailydatas = async (id, columns) => {
+let updataOneDailydatas = async (id, updata) => {
    try {
       // console.log("Dailydatas id to delete = ", id);
       if (!id)
@@ -78,7 +92,7 @@ let updataOneDailydatas = async (id, columns) => {
       if (!existCheck)
          throw ("Not found id");
 
-      return updateOne({ _id: id }, columns);
+      return updateOne({ _id: id }, updata);
 
    } catch (error) {
       throw error
@@ -127,4 +141,5 @@ module.exports = {
    findOneDailydatas,
    findOneDailydatasById,
    findAllDailydatas,
+   findDailydatasBySpecificCondition,
 }

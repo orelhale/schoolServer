@@ -58,6 +58,29 @@ let student_updateManyStudent = (condition) => {
 // exports.student_insertManyStudent = student_insertManyStudent;
 // exports.student_updateManyStudent = student_updateManyStudent;
 
+
+
+let find = (condition = {}, columns) => {
+    return StudentsModel.find(condition, columns);
+}
+
+let findById = (condition, columns) => {
+    return StudentsModel.findById(condition, columns);
+}
+
+let findOne = (condition, columns) => {
+    return StudentsModel.findOne(condition, columns);
+}
+
+let updateOne = (condition, update) => {
+    return StudentsModel.updateOne(condition, update);
+}
+
+let deleteById = (condition) => {
+    return StudentsModel.findByIdAndDelete(condition);
+}
+
+
 module.exports = {
     create,
     student_findStudent,
@@ -67,4 +90,10 @@ module.exports = {
     student_deleteManyStudent,
     student_insertManyStudent,
     student_updateManyStudent,
+
+    find,
+    findOne,
+    updateOne,
+    findById,
+    deleteById,
 }

@@ -117,7 +117,7 @@ let createDefaultClass = async () => {
                "identify": "3",
                "schoolName": "mySchool",
                "classId": "6469fc617ef693879e575c2e",
-               "_id": "6469fc617ef693879e575c31",
+               "_id": "6469fc617ef693879e575c41",
             },
             {
                "nameStudent": "יעקב",
@@ -125,7 +125,7 @@ let createDefaultClass = async () => {
                "identify": "4",
                "schoolName": "mySchool",
                "classId": "6469fc617ef693879e575c2e",
-               "_id": "6469fc617ef693879e575c32",
+               "_id": "6469fc617ef693879e575c52",
             },
             {
                "nameStudent": "ישראל",
@@ -133,7 +133,7 @@ let createDefaultClass = async () => {
                "identify": "5",
                "schoolName": "mySchool",
                "classId": "6469fc617ef693879e575c2e",
-               "_id": "6469fc617ef693879e575c33",
+               "_id": "6469fc617ef693879e575c63",
             },
             {
                "nameStudent": "שמעון",
@@ -141,7 +141,7 @@ let createDefaultClass = async () => {
                "identify": "6",
                "schoolName": "mySchool",
                "classId": "6469fc617ef693879e575c2e",
-               "_id": "6469fc617ef693879e575c34",
+               "_id": "6469fc617ef693879e575c74",
             }
          ],
          "nameOfSchool": "mySchool",

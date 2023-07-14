@@ -3,8 +3,12 @@ const { Schema } = mongoose;
 
 
 let schema = new Schema({
-    month: String,
-    data: Array
+    teacherId: String,
+    classId: String,
+    professionId: String,
+    year: Number,
+    dailyDataList: [{day: Number, list: [{studentId: String, attendance: String}]}],
+    month: Number,
 })
 
 
@@ -88,3 +92,5 @@ exports.findOne = findOne
 exports.updateOne = updateOne
 exports.findById = findById
 exports.deleteById = deleteById
+
+
