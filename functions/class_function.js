@@ -45,6 +45,15 @@ let findOneClass = async (condition, columns) => {
 }
 
 
+let findClass = async (condition = {}, columns) => {
+   try {
+      return await find(condition, columns)
+   } catch (error) {
+      throw error
+   }
+}
+
+
 let findClassById = async (classId, columns) => {
    try {
       if (!classId)
@@ -78,4 +87,5 @@ module.exports = {
    findOneClass,
    findClassById,
    findAll,
+   findClass,
 }

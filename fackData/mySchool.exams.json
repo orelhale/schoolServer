@@ -1,0 +1,208 @@
+[
+  {
+    "_id": "64b78827e3ae4f30d95e01cf",
+    "teacherId": "64b78253ad32317e5dd4f8b5",
+    "className": "64b7850b4d49bb5c8b78469d",
+    "date": "7/19/2023",
+    "examName": "מבחן 1",
+    "examList": [
+      {
+        "nameStudent": "שרה",
+        "id": "64b7850b4d49bb5c8b78469f",
+        "score": "78"
+      },
+      {
+        "nameStudent": "מיכל",
+        "id": "64b7850b4d49bb5c8b7846a0",
+        "score": "56"
+      },
+      {
+        "nameStudent": "רבקה",
+        "id": "64b7850b4d49bb5c8b7846a1",
+        "score": 100
+      },
+      {
+        "nameStudent": "שולמית",
+        "id": "64b7850b4d49bb5c8b7846a2",
+        "score": "76"
+      },
+      {
+        "nameStudent": "נעה",
+        "id": "64b7853e4d49bb5c8b7846a7",
+        "score": "88"
+      }
+    ],
+    "average": 80,
+    "__v": 0
+  },
+  {
+    "_id": "64b78838e3ae4f30d95e01d3",
+    "teacherId": "64b78253ad32317e5dd4f8b5",
+    "className": "64b7850b4d49bb5c8b78469d",
+    "date": "7/18/2023",
+    "examName": "מבחן 2",
+    "examList": [
+      {
+        "nameStudent": "שרה",
+        "id": "64b7850b4d49bb5c8b78469f",
+        "score": "78"
+      },
+      {
+        "nameStudent": "מיכל",
+        "id": "64b7850b4d49bb5c8b7846a0",
+        "score": "99"
+      },
+      {
+        "nameStudent": "רבקה",
+        "id": "64b7850b4d49bb5c8b7846a1",
+        "score": "77"
+      },
+      {
+        "nameStudent": "שולמית",
+        "id": "64b7850b4d49bb5c8b7846a2",
+        "score": "89"
+      },
+      {
+        "nameStudent": "נעה",
+        "id": "64b7853e4d49bb5c8b7846a7",
+        "score": "95"
+      }
+    ],
+    "average": 88,
+    "__v": 0
+  },
+  {
+    "_id": "64b78847e3ae4f30d95e01d7",
+    "teacherId": "64b78253ad32317e5dd4f8b5",
+    "className": "64b7850b4d49bb5c8b78469d",
+    "date": "7/17/2023",
+    "examName": "מבחן 3",
+    "examList": [
+      {
+        "nameStudent": "שרה",
+        "id": "64b7850b4d49bb5c8b78469f",
+        "score": 100
+      },
+      {
+        "nameStudent": "מיכל",
+        "id": "64b7850b4d49bb5c8b7846a0",
+        "score": 100
+      },
+      {
+        "nameStudent": "רבקה",
+        "id": "64b7850b4d49bb5c8b7846a1",
+        "score": 100
+      },
+      {
+        "nameStudent": "שולמית",
+        "id": "64b7850b4d49bb5c8b7846a2",
+        "score": "85"
+      },
+      {
+        "nameStudent": "נעה",
+        "id": "64b7853e4d49bb5c8b7846a7",
+        "score": "68"
+      }
+    ],
+    "average": 91,
+    "__v": 0
+  },
+  {
+    "_id": "64b78858e3ae4f30d95e020a",
+    "teacherId": "64b78253ad32317e5dd4f8b5",
+    "className": "64b7850b4d49bb5c8b78469d",
+    "date": "7/19/2023",
+    "examName": "מבחן 4",
+    "examList": [
+      {
+        "nameStudent": "שרה",
+        "id": "64b7850b4d49bb5c8b78469f",
+        "score": "45"
+      },
+      {
+        "nameStudent": "מיכל",
+        "id": "64b7850b4d49bb5c8b7846a0",
+        "score": "66"
+      },
+      {
+        "nameStudent": "רבקה",
+        "id": "64b7850b4d49bb5c8b7846a1",
+        "score": "34"
+      },
+      {
+        "nameStudent": "שולמית",
+        "id": "64b7850b4d49bb5c8b7846a2",
+        "score": 100
+      },
+      {
+        "nameStudent": "נעה",
+        "id": "64b7853e4d49bb5c8b7846a7",
+        "score": "54"
+      }
+    ],
+    "average": 60,
+    "__v": 0
+  },
+  {
+    "_id": "64b7889ce3ae4f30d95e042f",
+    "teacherId": "64b78253ad32317e5dd4f8b5",
+    "className": "64b784ac4d49bb5c8b784693",
+    "date": "7/19/2023",
+    "examName": "מבחן 11",
+    "examList": [
+      {
+        "nameStudent": "אוראל",
+        "id": "64b784ac4d49bb5c8b784695",
+        "score": "34"
+      },
+      {
+        "nameStudent": "שלומי",
+        "id": "64b784ac4d49bb5c8b784696",
+        "score": 100
+      },
+      {
+        "nameStudent": "יוסף",
+        "id": "64b784ac4d49bb5c8b784697",
+        "score": 100
+      },
+      {
+        "nameStudent": "דניאל",
+        "id": "64b784ac4d49bb5c8b784698",
+        "score": "75"
+      }
+    ],
+    "average": 77,
+    "__v": 0
+  },
+  {
+    "_id": "64b788a6e3ae4f30d95e0433",
+    "teacherId": "64b78253ad32317e5dd4f8b5",
+    "className": "64b784ac4d49bb5c8b784693",
+    "date": "7/4/2023",
+    "examName": "מבחן 22",
+    "examList": [
+      {
+        "nameStudent": "אוראל",
+        "id": "64b784ac4d49bb5c8b784695",
+        "score": 100
+      },
+      {
+        "nameStudent": "שלומי",
+        "id": "64b784ac4d49bb5c8b784696",
+        "score": "44"
+      },
+      {
+        "nameStudent": "יוסף",
+        "id": "64b784ac4d49bb5c8b784697",
+        "score": 100
+      },
+      {
+        "nameStudent": "דניאל",
+        "id": "64b784ac4d49bb5c8b784698",
+        "score": "32"
+      }
+    ],
+    "average": 69,
+    "__v": 0
+  }
+]

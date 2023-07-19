@@ -1,0 +1,135 @@
+[
+  {
+    "_id": "64b784ac4d49bb5c8b784693",
+    "nameOfClass": "א",
+    "listStudents": [
+      {
+        "nameStudent": "אוראל",
+        "family": "חלא",
+        "haddress": "הרצל 5",
+        "phone": "052",
+        "nameOfClass": "א",
+        "is_active": true,
+        "identify": "1",
+        "schoolName": "mySchool",
+        "classId": "64b784ac4d49bb5c8b784693",
+        "_id": "64b784ac4d49bb5c8b784695",
+        "__v": 0
+      },
+      {
+        "nameStudent": "שלומי",
+        "family": "לוי",
+        "haddress": "השבעה 4",
+        "phone": "0522222",
+        "nameOfClass": "א",
+        "is_active": true,
+        "identify": "2",
+        "schoolName": "mySchool",
+        "classId": "64b784ac4d49bb5c8b784693",
+        "_id": "64b784ac4d49bb5c8b784696",
+        "__v": 0
+      },
+      {
+        "nameStudent": "יוסף",
+        "family": "כהן",
+        "haddress": "כנען 3",
+        "phone": "03",
+        "nameOfClass": "א",
+        "is_active": true,
+        "identify": "3",
+        "schoolName": "mySchool",
+        "classId": "64b784ac4d49bb5c8b784693",
+        "_id": "64b784ac4d49bb5c8b784697",
+        "__v": 0
+      },
+      {
+        "nameStudent": "דניאל",
+        "family": "ביטון",
+        "haddress": "שובל 5",
+        "phone": "0525555",
+        "nameOfClass": "א",
+        "is_active": true,
+        "identify": "5",
+        "schoolName": "mySchool",
+        "classId": "64b784ac4d49bb5c8b784693",
+        "_id": "64b784ac4d49bb5c8b784698",
+        "__v": 0
+      }
+    ],
+    "nameOfSchool": "mySchool",
+    "__v": 0
+  },
+  {
+    "_id": "64b7850b4d49bb5c8b78469d",
+    "nameOfClass": "ג",
+    "listStudents": [
+      {
+        "nameStudent": "שרה",
+        "family": "לוי",
+        "haddress": "הרצל 6",
+        "phone": "052666",
+        "nameOfClass": "ג",
+        "is_active": true,
+        "identify": "6",
+        "schoolName": "mySchool",
+        "classId": "64b7850b4d49bb5c8b78469d",
+        "_id": "64b7850b4d49bb5c8b78469f",
+        "__v": 0
+      },
+      {
+        "nameStudent": "מיכל",
+        "family": "חממי",
+        "haddress": "רימון 5",
+        "phone": "0525555",
+        "nameOfClass": "ג",
+        "is_active": true,
+        "identify": "5",
+        "schoolName": "mySchool",
+        "classId": "64b7850b4d49bb5c8b78469d",
+        "_id": "64b7850b4d49bb5c8b7846a0",
+        "__v": 0
+      },
+      {
+        "nameStudent": "רבקה",
+        "family": "כהן",
+        "haddress": "אלון 7 ",
+        "phone": "0527777",
+        "nameOfClass": "ג",
+        "is_active": true,
+        "identify": "7",
+        "schoolName": "mySchool",
+        "classId": "64b7850b4d49bb5c8b78469d",
+        "_id": "64b7850b4d49bb5c8b7846a1",
+        "__v": 0
+      },
+      {
+        "nameStudent": "שולמית",
+        "family": "יצחקי",
+        "haddress": "ההסתדרות 95",
+        "phone": "05288888",
+        "nameOfClass": "ג",
+        "is_active": true,
+        "identify": "8",
+        "schoolName": "mySchool",
+        "classId": "64b7850b4d49bb5c8b78469d",
+        "_id": "64b7850b4d49bb5c8b7846a2",
+        "__v": 0
+      },
+      {
+        "nameStudent": "נעה",
+        "family": "לוינקסי",
+        "haddress": "רבי עקיבא 66",
+        "phone": "0533366",
+        "nameOfClass": "ג",
+        "is_active": true,
+        "identify": "12",
+        "schoolName": "mySchool",
+        "classId": "64b7850b4d49bb5c8b78469d",
+        "_id": "64b7853e4d49bb5c8b7846a7",
+        "__v": 0
+      }
+    ],
+    "nameOfSchool": "mySchool",
+    "__v": 0
+  }
+]

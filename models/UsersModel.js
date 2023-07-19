@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 
 let schema = new Schema({
     name: String,
+    family: String,
     email: String,
     password: String,
     nameSchool: String,

@@ -19,7 +19,9 @@ router.get("/", async (req, res) => {
 router.get("/:classId", async (req, res) => {
    try {
       let { classId } = req.params
-
+      console.log("classId == ",classId);
+      let result = await findClassById(classId)
+      console.log("result == ",result);
       res.status(200).send(await findClassById(classId))
    } catch (error) {
       res.status(400).send(error)

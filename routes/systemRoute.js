@@ -36,6 +36,7 @@ router.post("/login", async (req, res) => {
 
         let dataToToken = {
             name: user.name,
+            family: user.family,
             email: user.email,
             id: user._id,
             nameSchool: user.nameSchool,
@@ -67,6 +68,7 @@ router.post("/register", async (req, res) => {
 
         let newUser = {
             name: req.body.name,
+            family: req.body.family,
             email: req.body.email,
             password: req.body.password,
             nameSchool: req.body.nameSchool

@@ -9,6 +9,7 @@ let {
      createDefaultStudent,
      createDefaultProfession,
      createDefaultExams,
+     createDefaultDailydatas,
      } = require("./functions/system_function")
 
 require("./DB/connectionToMongo")
@@ -27,11 +28,12 @@ app.get("/", (req, res) => {
 
 let port = process.env.MYPORT || 4001
 app.listen(port, () => {
-    createDefaultStudent()
     createDefaultUsers()
+    createDefaultStudent()
     createDefaultClass()
     createDefaultProfession()
     createDefaultExams()
+    createDefaultDailydatas()
     console.log("server work in port = " + port)
 })
 

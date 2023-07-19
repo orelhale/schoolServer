@@ -29,11 +29,21 @@ let findAllProfession = async (data) => {
 }
 
 
+let findProfession = async (condition = {}, columns) => {
+   try {
+
+      return await find(condition, columns)
+   } catch (error) {
+      throw error
+   }
+}
+
+
 let findOneProfession = async (condition, columns) => {
    try {
       if (!condition)
-      throw ("Condition is null");
-      
+         throw ("Condition is null");
+
       return await findOne(condition, columns)
    } catch (error) {
       throw error
@@ -94,4 +104,5 @@ module.exports = {
    updataOneProfession,
    deleteProfession,
    findOneProfession,
+   findProfession,
 }

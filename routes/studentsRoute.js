@@ -2,14 +2,26 @@ let { Router } = require("express")
 let router = Router()
 
 let {
-   createOneStudent,
-   findOneStudent,
-   // findAllStudentByClassId,
+
+   findById,
 } = require("../functions/student_function")
 
 
 
 
+router.post("/list", async (req, res) => {
+   try {
+      let { listStudentId } = req.body;
+      
+      let resultList = await Promise.all(listStudentId.map(async element => {
+         return await findById(element);
+      }));
+      
+      res.status(200).send(resultList);
+   } catch (error) {
+      res.status(400).send(error);
+   }
+});
 // router.get("class/:classId", async (req, res) => {
 //    try {
 //       let { classId } = req.params

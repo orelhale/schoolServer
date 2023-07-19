@@ -17,7 +17,7 @@ exports.ClassesModel = ClassesModel;
 
 let classes_createClass = async (data) => {
     let newClass = await new ClassesModel(data)
-    console.log("_classes_createClass_ = ", newClass);
+    // console.log("_classes_createClass_ = ", newClass);
     return await newClass.save()
 }
 

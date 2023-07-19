@@ -1,5 +1,5 @@
 
-let { 
+let {
    create,
    find,
    findOne,
@@ -14,7 +14,31 @@ let createDailydatas = async (data) => {
    try {
       if (!data)
          throw ("Data is empty")
+
+      // console.log("data == ", data);
+      
+      let { teacherId, classId, month, dailyDataList } = data
+
+      let findDailydatasByMonth = await findOneDailydatasBy_TeacherIdClassId_Month({ teacherId, classId, month })
+      
+      if(findDailydatasByMonth){
+         let day = dailyDataList[0].day
+         // console.log("findDailydatasByMonth == ",findDailydatasByMonth);
+         let findIndexDay = findDailydatasByMonth.dailyDataList.findIndex( d => d.day == day)
+         // console.log("findIndexDay == ",findIndexDay);
+         if(findIndexDay >= 0){
+            findDailydatasByMonth.dailyDataList[findIndexDay] = dailyDataList[0]
+            console.log("updateOne 111");
+            return await updateOne({_id :findDailydatasByMonth._id}, {dailyDataList: findDailydatasByMonth.dailyDataList})
+         }else{
+            findDailydatasByMonth.dailyDataList.push(dailyDataList[0])
+            console.log("updateOne 222");
+            return await updateOne({_id :findDailydatasByMonth._id}, {dailyDataList: findDailydatasByMonth.dailyDataList})
+         }
+      }
+
       return create(data);
+      
    } catch (error) {
       throw error
    }
@@ -38,7 +62,7 @@ let findDailydatasByTeacherIdAndClassId = (teacherId, classId, columns) => {
       if (!classId)
          throw ("ClassId is null");
 
-      return find({ teacherId: teacherId, className: classId }, columns);
+      return find({ teacherId: teacherId, classId: classId }, columns);
    } catch (error) {
       throw error
    }
@@ -50,14 +74,23 @@ let findDailydatasBySpecificCondition = async (condition, columns) => {
          throw ("condition is empty");
 
       let id = await findOne(condition, columns);
-      let obj = id ? await findById(id._id) : id
+      // console.log("id == ",id);
+      // let obj = id ? await findById(id._id) : id
 
-      return obj
+      return id
    } catch (error) {
       throw error
    }
 }
 
+let findDailydatas = (condition = {}, columns) => {
+   try {
+
+      return find(condition, columns)
+   } catch (error) {
+      throw error
+   }
+}
 let findOneDailydatas = (condition, columns) => {
    try {
       if (!condition)
@@ -119,6 +152,20 @@ let deleteDailydatas = async (id) => {
 
 
 
+let findOneDailydatasBy_TeacherIdClassId_Month = async ({ teacherId, classId, month }, columns) => {
+   try {
+
+      if (!teacherId || !classId || !month)
+         throw ("teacherId || classId || month is null");
+      // console.log("{ teacherId, classId, month } == ",{ teacherId, classId, month });
+     
+      return findOne({ teacherId, classId, month }, columns);
+
+   } catch (error) {
+      throw error
+   }
+}
+
 
 
 
@@ -139,6 +186,7 @@ module.exports = {
    createDailydatas,
    findDailydatasByTeacherIdAndClassId,
    findOneDailydatas,
+   findDailydatas,
    findOneDailydatasById,
    findAllDailydatas,
    findDailydatasBySpecificCondition,

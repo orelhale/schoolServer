@@ -4,7 +4,11 @@ const { Schema } = mongoose;
 
 let schema = new Schema({
     nameStudent: String,
+    family: String,
+    haddress: String,
+    phone: String,
     nameOfClass: String,
+    is_active: { type: Boolean, default: true },
     identify: String,
     schoolName: String,
     classId: String,
@@ -18,11 +22,8 @@ exports.StudentsModel = StudentsModel;
 
 let create = (data) => {
     let newData = new StudentsModel(data)
+        console.log("_StudentsModel_create_ = ", newData);
     return newData.save()
- }
-
-let student_findStudent = (condition, data) => {
-    return StudentsModel.find(condition, data);
 }
 
 let student_findOneStudent = (condition, data) => {
@@ -42,6 +43,7 @@ let student_deleteManyStudent = (condition) => {
 }
 
 let student_insertManyStudent = (condition) => {
+    console.log("student_insertManyStudent__ === ",condition);
     return StudentsModel.insertMany(condition);
 }
 
@@ -50,7 +52,6 @@ let student_updateManyStudent = (condition) => {
 }
 
 
-// exports.student_findStudent = student_findStudent;
 // exports.student_findOneStudent = student_findOneStudent;
 // exports.student_updateOneStudent = student_updateOneStudent;
 // exports.student_deleteOneStudent = student_deleteOneStudent;
@@ -83,7 +84,6 @@ let deleteById = (condition) => {
 
 module.exports = {
     create,
-    student_findStudent,
     student_findOneStudent,
     student_updateOneStudent,
     student_deleteOneStudent,

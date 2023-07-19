@@ -1,0 +1,40 @@
+[
+  {
+    "_id": "64b78253ad32317e5dd4f8b5",
+    "name": "shira",
+    "family": "sobi",
+    "email": "shira@gmail.com",
+    "password": "1",
+    "nameSchool": "mySchool",
+    "Date": "2023-07-19T06:27:31.873Z",
+    "class_permission": [
+      "64b784ac4d49bb5c8b784693", "64b7850b4d49bb5c8b78469d"
+    ],
+    "level_permission": "teacher",
+    "__v": 0
+  },
+  {
+    "_id": "64b78254ad32317e5dd4f8b8",
+    "name": "orel",
+    "family": "orian",
+    "email": "orel@gmail.com",
+    "password": "1",
+    "nameSchool": "mySchool",
+    "Date": "2023-07-19T06:27:31.873Z",
+    "class_permission": [],
+    "level_permission": "admin",
+    "__v": 0
+  },
+  {
+    "_id": "64b78254ad32317e5dd4f8bb",
+    "name": "aliya",
+    "family": "halvi",
+    "email": "aliya@gmail.com",
+    "password": "1",
+    "nameSchool": "mySchool",
+    "Date": "2023-07-19T06:27:31.873Z",
+    "class_permission": [],
+    "level_permission": "Unauthorized",
+    "__v": 0
+  }
+]

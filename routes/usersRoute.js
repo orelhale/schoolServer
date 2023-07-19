@@ -2,7 +2,7 @@ let express = require("express")
 let router = express.Router()
 
 let { StudentsModel } = require("../models/StudentsModel")
-let { student_findStudent, student_findOneStudent, student_updateOneStudent } = require("../models/StudentsModel")
+let { findStudent } = require("../functions/student_function")
 let { DailyDatasModel } = require("../models/DailyDatasModel")
 let { exams_createExam, exams_updateOneExam, exams_findOneExam, exams_findExam } = require("../models/ExamsModel")
 let { deleteOneExam } = require("../functions/exam_function")
@@ -18,7 +18,7 @@ router.post("/GetListOfStudentsInSpecificClasses", async (req, res) => {
     try {
         let dataFromCleient = req.body.nameOfClass
         // console.log("dataFromCleient =",dataFromCleient);
-        let studentListData = await student_findStudent({ classId: dataFromCleient })
+        let studentListData = await findStudent({ classId: dataFromCleient })
         // console.log("studentListData = ",studentListData);
         let listStudents = studentListData.map(item => item.nameStudent)
         res.status(200).send(listStudents)
@@ -34,7 +34,7 @@ router.post("/GetListOfStudentsInSpecificClassesWithId", async (req, res) => {
     try {
         let dataFromCleient = req.body.nameOfClass
         // console.log("dataFromCleient =",dataFromCleient);
-        let studentListData = await student_findStudent({ classId: dataFromCleient })
+        let studentListData = await findStudent({ classId: dataFromCleient })
         // console.log("studentListData = ",studentListData);
         let listStudents = studentListData.map(item => item.nameStudent)
         res.status(200).send(studentListData)

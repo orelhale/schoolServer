@@ -87,7 +87,7 @@ router.get("/average/:teacherId/:classId", async (req, res) => {
 
       listAverage.forEach(avr => avr.average = Math.ceil(avr.average / examList.length))
 
-      // console.log("teacherId == ",teacherId);
+      console.log("listAverage == ",listAverage);
       // console.log("classId == ",classId);
 
       res.status(200).send(listAverage)

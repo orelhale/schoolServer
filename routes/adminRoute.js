@@ -95,7 +95,7 @@ router.get("/getListOf_ClassNameAndClassId", async (req, res) => {
 router.get("/getListOfAllTheClassesWithStudents", async (req, res) => {
     try {
         let dataFromDatabase = await classes_findClass({}, "-__v")
-        // console.log("dataFromDatabase = ",dataFromDatabase);
+        console.log("dataFromDatabase = ",dataFromDatabase);
         res.status(200).send(dataFromDatabase)
 
     } catch (err) {

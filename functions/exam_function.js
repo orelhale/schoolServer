@@ -1,11 +1,11 @@
 
 let { 
-   exams_createExam,
-   exams_findByIdAndDelete,
-   exams_findExamById,
-   exams_updateOneExam,
-   exams_findOneExam,
-   exams_findExam,
+   create,
+   find,
+   findOne,
+   updateOne,
+   findById,
+   deleteById,
 } = require("../models/ExamsModel")
 
 
@@ -17,12 +17,12 @@ let deleteOneExam = async (id) => {
       if (!id)
          throw ("Id is null");
 
-      let existCheck = await exams_findExamById(id);
+      let existCheck = await findById(id);
 
       if (!existCheck)
          throw ("Not found id");
 
-      return exams_findByIdAndDelete(id);
+      return deleteById(id);
 
    } catch (error) {
       throw error
@@ -36,12 +36,12 @@ let updataOneExam = async (id, columns) => {
       if (!id)
          throw ("Id is null");
 
-      let existCheck = await exams_findExamById(id);
+      let existCheck = await findById(id);
 
       if (!existCheck)
          throw ("Not found id");
 
-      return exams_updateOneExam({ _id: id }, columns);
+      return updateOne({ _id: id }, columns);
 
    } catch (error) {
       throw error
@@ -53,7 +53,7 @@ let createOneExam = async (data) => {
    try {
       if (!data)
          throw ("Data is empty")
-      return exams_createExam(data);
+      return create(data);
    } catch (error) {
       throw error
    }
@@ -68,7 +68,16 @@ let findExamsByTeacherIdAndClassId = (teacherId, classId, columns) => {
       if (!classId)
       throw ("ClassId is null");
 
-      return exams_findExam({ teacherId: teacherId, className: classId }, columns);
+      return find({ teacherId: teacherId, className: classId }, columns);
+   } catch (error) {
+      throw error
+   }
+}
+
+let findExam = (condition = {}, columns) => {
+   try {
+
+      return find(condition, columns)
    } catch (error) {
       throw error
    }
@@ -79,7 +88,7 @@ let findOneExam = (condition, columns) => {
       if (!condition)
          throw ("Condition is null");
 
-      return exams_findOneExam(condition, columns)
+      return findOne(condition, columns)
    } catch (error) {
       throw error
    }
@@ -90,7 +99,7 @@ let findOneExamById = async (id, columns) => {
       if (!id)
          throw ("Id is null");
 
-      return exams_findExamById(id, columns)
+      return findById(id, columns)
    } catch (error) {
       throw error
    }
@@ -101,7 +110,7 @@ let getStudentTestAverage = async () => {
       if (!id)
          throw ("Id is null");
 
-      return exams_findExamById(id, columns)
+      return findById(id, columns)
    } catch (error) {
       throw error
    }
@@ -123,5 +132,6 @@ module.exports = {
    createOneExam,
    findExamsByTeacherIdAndClassId,
    findOneExam,
+   findExam,
    findOneExamById,
 }
